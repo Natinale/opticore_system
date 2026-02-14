@@ -10,8 +10,6 @@ import powerImg from '../assets/power.png';
 import civilImg from '../assets/civil.png';
 import geotechImg from '../assets/geotech.png';
 
-
-
 const HomePage = () => {
   const products = [
     {
@@ -38,28 +36,28 @@ const HomePage = () => {
   ];
 
   const applications = [
-  { name: 'Structural Health Monitoring', img: shmImg },
-  { name: 'Oil & Gas Pipelines', img: oilGasImg },
-  { name: 'Aerospace & Aviation', img: aerospaceImg },
-  { name: 'Power & Energy', img: powerImg },
-  { name: 'Civil Infrastructure', img: civilImg },
-  { name: 'Geotechnical', img: geotechImg },
+    { name: 'Structural Health Monitoring', img: shmImg },
+    { name: 'Oil & Gas Pipelines', img: oilGasImg },
+    { name: 'Aerospace & Aviation', img: aerospaceImg },
+    { name: 'Power & Energy', img: powerImg },
+    { name: 'Civil Infrastructure', img: civilImg },
+    { name: 'Geotechnical', img: geotechImg },
   ];
 
   return (
     <div style={styles.container}>
       {/* Hero Section */}
-      <section style={styles.hero}>
+      <section className="hero" style={styles.hero}>
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 className="heroTitle" style={styles.heroTitle}>
             Advanced <span style={styles.highlight}>Fiber Optic</span> Sensing Solutions
           </h1>
-          <p style={styles.heroSubtitle}>
-            Industry-leading FBG interrogators, distributed sensing systems, and optical components 
+          <p className="heroSubtitle" style={styles.heroSubtitle}>
+            Industry-leading FBG interrogators, distributed sensing systems, and optical components
             for structural health monitoring, energy, and industrial applications.
           </p>
-          <div style={styles.heroCta}>
+          <div className="heroCta" style={styles.heroCta}>
             <Link to="/products" style={styles.primaryBtn}>
               Explore Products
             </Link>
@@ -68,58 +66,55 @@ const HomePage = () => {
             </Link>
           </div>
         </div>
-        
+
         {/* Animated fiber lines */}
         <div style={styles.fiberAnimation}>
           {[...Array(5)].map((_, i) => (
-            <div key={i} style={{
-              ...styles.fiberLine,
-              top: `${20 + i * 15}%`,
-              animationDelay: `${i * 0.5}s`,
-            }} />
+            <div
+              key={i}
+              style={{
+                ...styles.fiberLine,
+                top: `${20 + i * 15}%`,
+                animationDelay: `${i * 0.5}s`,
+              }}
+            />
           ))}
         </div>
       </section>
 
       {/* Animated Showcase Section */}
-<section style={styles.showcaseSection}>
-  <video 
-    autoPlay 
-    loop 
-    muted 
-    style={styles.showcaseVideo}
-  >
-    <source src={fiberDemo} type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-  <p style={styles.showcaseText}>
-    Advanced fiber optic solutions
-  </p>
-</section>
-
+      <section className="showcase" style={styles.showcaseSection}>
+        <video autoPlay loop muted className="showcaseVideo" style={styles.showcaseVideo}>
+          <source src={fiberDemo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <p style={styles.showcaseText}>Advanced fiber optic solutions</p>
+      </section>
 
       {/* Products Section */}
-      <section style={styles.section}>
+      <section className="section" style={styles.section}>
         <div style={styles.sectionHeader}>
-          <h2 style={styles.sectionTitle}>Our Products</h2>
+          <h2 className="sectionTitle" style={styles.sectionTitle}>Our Products</h2>
           <p style={styles.sectionSubtitle}>
             Comprehensive fiber optic sensing solutions for demanding applications
           </p>
         </div>
-        <div style={styles.productsGrid}>
+
+        <div className="productsGrid" style={styles.productsGrid}>
           {products.map((product) => (
             <Link to={product.link} key={product.title} style={styles.productCard}>
-              <div style={styles.productImageContainer}>
-  <img 
-    src={product.image} 
-    alt={product.title} 
-    style={styles.productImage} 
-  />
-</div>
+              <div className="productImageContainer" style={styles.productImageContainer}>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="productImage"
+                  style={styles.productImage}
+                />
+              </div>
 
               <h3 style={styles.productTitle}>{product.title}</h3>
               <p style={styles.productDesc}>{product.desc}</p>
-              <span style={{...styles.productLink, color: product.color}}>
+              <span style={{ ...styles.productLink, color: product.color }}>
                 Learn More →
               </span>
             </Link>
@@ -128,21 +123,23 @@ const HomePage = () => {
       </section>
 
       {/* Applications Section */}
-      <section style={styles.applicationsSection}>
+      <section className="applications" style={styles.applicationsSection}>
         <div style={styles.sectionHeader}>
-          <h2 style={styles.sectionTitle}>Applications</h2>
+          <h2 className="sectionTitle" style={styles.sectionTitle}>Applications</h2>
           <p style={styles.sectionSubtitle}>
             Trusted across industries for critical sensing applications
           </p>
         </div>
-        <div style={styles.applicationsGrid}>
-         {applications.map((app) => (
-    <div key={app.name} style={styles.appCard}>
-      <img src={app.img} alt={app.name} style={styles.appImage} />
-      <span style={styles.appName}>{app.name}</span>
-    </div>
+
+        <div className="applicationsGrid" style={styles.applicationsGrid}>
+          {applications.map((app) => (
+            <div key={app.name} style={styles.appCard}>
+              <img src={app.img} alt={app.name} className="appImage" style={styles.appImage} />
+              <span style={styles.appName}>{app.name}</span>
+            </div>
           ))}
         </div>
+
         <div style={styles.centerCta}>
           <Link to="/applications" style={styles.outlineBtn}>
             View All Applications
@@ -151,15 +148,16 @@ const HomePage = () => {
       </section>
 
       {/* Services Section */}
-      <section style={styles.section}>
-        <div style={styles.servicesContainer}>
+      <section className="section" style={styles.section}>
+        <div className="servicesContainer" style={styles.servicesContainer}>
           <div style={styles.servicesContent}>
-            <h2 style={styles.sectionTitle}>Expert Services</h2>
+            <h2 className="sectionTitle" style={styles.sectionTitle}>Expert Services</h2>
             <p style={styles.servicesDesc}>
-              From initial consultation to full system installation and ongoing support, 
-              our team of fiber optic specialists ensures your sensing solution delivers 
+              From initial consultation to full system installation and ongoing support,
+              our team of fiber optic specialists ensures your sensing solution delivers
               optimal performance.
             </p>
+
             <div style={styles.servicesList}>
               <div style={styles.serviceItem}>
                 <span style={styles.serviceIcon}>📋</span>
@@ -168,6 +166,7 @@ const HomePage = () => {
                   <p style={styles.serviceDesc}>System design and feasibility analysis</p>
                 </div>
               </div>
+
               <div style={styles.serviceItem}>
                 <span style={styles.serviceIcon}>🔧</span>
                 <div>
@@ -175,6 +174,7 @@ const HomePage = () => {
                   <p style={styles.serviceDesc}>Professional deployment and commissioning</p>
                 </div>
               </div>
+
               <div style={styles.serviceItem}>
                 <span style={styles.serviceIcon}>🎓</span>
                 <div>
@@ -183,17 +183,19 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
+
             <Link to="/services" style={styles.primaryBtn}>
               Our Services
             </Link>
           </div>
+
           <div style={styles.servicesImage}>
             <div style={styles.servicesImagePlaceholder}>
               <svg width="200" height="200" viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="80" stroke="#00ff88" strokeWidth="2" fill="none" opacity="0.3"/>
-                <circle cx="100" cy="100" r="60" stroke="#00ccff" strokeWidth="2" fill="none" opacity="0.5"/>
-                <circle cx="100" cy="100" r="40" stroke="#ff6600" strokeWidth="2" fill="none" opacity="0.7"/>
-                <circle cx="100" cy="100" r="20" fill="#ff3300" opacity="0.8"/>
+                <circle cx="100" cy="100" r="80" stroke="#00ff88" strokeWidth="2" fill="none" opacity="0.3" />
+                <circle cx="100" cy="100" r="60" stroke="#00ccff" strokeWidth="2" fill="none" opacity="0.5" />
+                <circle cx="100" cy="100" r="40" stroke="#ff6600" strokeWidth="2" fill="none" opacity="0.7" />
+                <circle cx="100" cy="100" r="20" fill="#ff3300" opacity="0.8" />
               </svg>
             </div>
           </div>
@@ -201,41 +203,84 @@ const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section style={styles.ctaSection}>
-        <h2 style={styles.ctaTitle}>Ready to Get Started?</h2>
+      <section className="cta" style={styles.ctaSection}>
+        <h2 className="ctaTitle" style={styles.ctaTitle}>Ready to Get Started?</h2>
         <p style={styles.ctaDesc}>
           Contact our team to discuss your fiber optic sensing requirements
         </p>
-        <div style={styles.ctaButtons}>
-          <Link to="/contact" style={styles.ctaPrimaryBtn}>
-            Contact Us
-          </Link>
-          <Link to="/products" style={styles.ctaSecondaryBtn}>
-            Browse Products
-          </Link>
+
+        <div className="ctaButtons" style={styles.ctaButtons}>
+          <Link to="/contact" style={styles.ctaPrimaryBtn}>Contact Us</Link>
+          <Link to="/products" style={styles.ctaSecondaryBtn}>Browse Products</Link>
         </div>
       </section>
 
       <style>{`
-      @keyframes servicePulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-  }
-}
-
+        @keyframes servicePulse {
+          0% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); }
+          50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
+          100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); }
+        }
         @keyframes fiberPulse {
           0% { transform: translateX(-100%); opacity: 0; }
           50% { opacity: 1; }
           100% { transform: translateX(200%); opacity: 0; }
+        }
+
+        /* =========================
+           RESPONSIVE FIXES
+           ========================= */
+
+        .heroTitle { font-size: clamp(28px, 6vw, 56px); }
+        .heroSubtitle { font-size: clamp(14px, 2.2vw, 20px); }
+
+        .productsGrid {
+          display: grid;
+          gap: 30px;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .productImageContainer {
+          width: 100%;
+          max-width: 320px;
+          height: 160px;
+          margin: 0 auto 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .productImage { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .applicationsGrid { -webkit-overflow-scrolling: touch; }
+        .appImage {
+          width: 100%;
+          max-width: 320px;
+          height: 180px;
+          object-fit: contain;
+        }
+
+        .servicesContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+          .servicesContainer { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+          .hero { padding: 80px 16px !important; min-height: auto !important; }
+          .showcase { padding: 60px 16px !important; }
+          .section { padding: 60px 16px !important; }
+          .applications { padding: 60px 16px !important; }
+          .cta { padding: 70px 16px !important; }
+
+          .heroCta { flex-direction: column; align-items: center; }
+          .heroCta a { width: 100%; max-width: 320px; text-align: center; }
+
+          .ctaButtons { flex-direction: column; align-items: center; }
+          .ctaButtons a { width: 100%; max-width: 320px; text-align: center; }
+
+          .showcaseVideo { width: 100% !important; border-radius: 16px !important; }
+          .sectionTitle { font-size: 28px !important; }
         }
       `}</style>
     </div>
@@ -272,21 +317,6 @@ const styles = {
     textAlign: 'center',
     maxWidth: '900px',
   },
-  productImageContainer: {
-  width: '270px',
-  height: '160px',
-  marginBottom: '10px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-},
-
-productImage: {
-  maxWidth: '100%',
-  maxHeight: '100%',
-  objectFit: 'contain',
-},
-
   heroTitle: {
     fontSize: '56px',
     fontWeight: 700,
@@ -352,54 +382,21 @@ productImage: {
     background: 'linear-gradient(90deg, transparent, #00ff88, #00ccff, transparent)',
     animation: 'fiberPulse 4s ease-in-out infinite',
   },
-
   showcaseSection: {
-  padding: '100px 40px',
-  textAlign: 'center',
-  background: 'rgba(0, 20, 40, 0.5)',
-},
-showcaseVideo: {
-  width: '100%',
-  maxWidth: '1200px',
-  borderRadius: '20px',
-  boxShadow: '0 0 30px rgba(0, 255, 136, 0.2)',
-},
-showcaseText: {
-  marginTop: '20px',
-  fontSize: '18px',
-  color: 'rgba(255,255,255,0.7)',
-},
-
-  stats: {
-    background: 'rgba(0, 30, 60, 0.5)',
-    padding: '60px 40px',
-    borderTop: '1px solid rgba(0, 200, 255, 0.1)',
-    borderBottom: '1px solid rgba(0, 200, 255, 0.1)',
-  },
-  statsGrid: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '40px',
+    padding: '100px 40px',
     textAlign: 'center',
+    background: 'rgba(0, 20, 40, 0.5)',
   },
-  statItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
+  showcaseVideo: {
+    width: '100%',
+    maxWidth: '1200px',
+    borderRadius: '20px',
+    boxShadow: '0 0 30px rgba(0, 255, 136, 0.2)',
   },
-  statNumber: {
-    fontSize: '48px',
-    fontWeight: 700,
-    fontFamily: "'Orbitron', sans-serif",
-    color: '#00ff88',
-    textShadow: '0 0 20px rgba(0, 255, 136, 0.5)',
-  },
-  statLabel: {
-    fontSize: '14px',
-    color: 'rgba(255,255,255,0.6)',
-    letterSpacing: '1px',
+  showcaseText: {
+    marginTop: '20px',
+    fontSize: '18px',
+    color: 'rgba(255,255,255,0.7)',
   },
   section: {
     padding: '100px 40px',
@@ -421,6 +418,8 @@ showcaseText: {
     fontSize: '18px',
     color: 'rgba(255,255,255,0.6)',
   },
+
+  // Keep these; actual responsive behavior is handled by the CSS block above
   productsGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -436,10 +435,18 @@ showcaseText: {
     display: 'flex',
     flexDirection: 'column',
   },
-  productIcon: {
-    fontSize: '48px',
-    marginBottom: '20px',
-    fontFamily: 'monospace',
+  productImageContainer: {
+    width: '270px',
+    height: '160px',
+    marginBottom: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  productImage: {
+    maxWidth: '100%',
+    maxHeight: '100%',
+    objectFit: 'contain',
   },
   productTitle: {
     fontSize: '24px',
@@ -459,44 +466,36 @@ showcaseText: {
     fontWeight: 600,
     letterSpacing: '1px',
   },
+
   applicationsSection: {
     padding: '100px 40px',
     background: 'rgba(0, 20, 40, 0.5)',
   },
   applicationsGrid: {
-  display: 'flex',
-  gap: '20px',
-  overflowX: 'auto',      // horizontal scroll
-  padding: '10px 0',
-  scrollbarWidth: 'thin', // optional, for Firefox
-  scrollbarColor: '#00ccff transparent',
+    display: 'flex',
+    gap: '20px',
+    overflowX: 'auto',
+    padding: '10px 0',
+    scrollbarWidth: 'thin',
+    scrollbarColor: '#00ccff transparent',
   },
-appCard: {
-  minWidth: '200px',        // ensures each card has enough space
-  background: 'rgba(0, 50, 100, 0.3)',
-  border: '1px solid rgba(0, 200, 255, 0.1)',
-  borderRadius: '12px',
-  padding: '20px',
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '10px',
-  flexShrink: 0,            // prevents shrinking when scrolling
-},
-appImage: {
-  width: '380px',
-  height: '260px',
-  objectFit: 'contain',     // keeps image ratio
-},
-appName: {
-  fontSize: '14px',
-  color: 'rgba(255,255,255,0.8)',
-  fontWeight: 500,
-},
-
-  appIcon: {
-    fontSize: '36px',
+  appCard: {
+    minWidth: '200px',
+    background: 'rgba(0, 50, 100, 0.3)',
+    border: '1px solid rgba(0, 200, 255, 0.1)',
+    borderRadius: '12px',
+    padding: '20px',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '10px',
+    flexShrink: 0,
+  },
+  appImage: {
+    width: '380px',
+    height: '260px',
+    objectFit: 'contain',
   },
   appName: {
     fontSize: '14px',
@@ -518,6 +517,7 @@ appName: {
     fontWeight: 600,
     letterSpacing: '1px',
   },
+
   servicesContainer: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
@@ -575,8 +575,8 @@ appName: {
     border: '1px solid rgba(0, 200, 255, 0.2)',
     animation: 'servicePulse 3s ease-in-out infinite',
     transition: 'all 0.3s ease',
-
   },
+
   ctaSection: {
     background: 'linear-gradient(135deg, rgba(255, 51, 0, 0.1), rgba(0, 255, 136, 0.1))',
     padding: '100px 40px',
