@@ -84,39 +84,42 @@ const HomePage = () => {
 
       {/* Animated Showcase Section */}
       <section className="showcase" style={styles.showcaseSection}>
-        <video autoPlay loop muted className="showcaseVideo" style={styles.showcaseVideo}>
-          <source src={fiberDemo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className="showcaseWrap">
+          <video autoPlay loop muted className="showcaseVideo" style={styles.showcaseVideo}>
+            <source src={fiberDemo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <p style={styles.showcaseText}>Advanced fiber optic solutions</p>
       </section>
 
       {/* Products Section */}
       <section className="section" style={styles.section}>
         <div style={styles.sectionHeader}>
-          <h2 className="sectionTitle" style={styles.sectionTitle}>Our Products</h2>
+          <h2 className="sectionTitle" style={styles.sectionTitle}>
+            Our Products
+          </h2>
           <p style={styles.sectionSubtitle}>
             Comprehensive fiber optic sensing solutions for demanding applications
           </p>
         </div>
 
-        <div className="productsGrid" style={styles.productsGrid}>
+        {/* Desktop grid, mobile horizontal slider */}
+        <div className="productsTrack" style={styles.productsGrid}>
           {products.map((product) => (
-            <Link to={product.link} key={product.title} style={styles.productCard}>
-              <div className="productImageContainer" style={styles.productImageContainer}>
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="productImage"
-                  style={styles.productImage}
-                />
+            <Link
+              to={product.link}
+              key={product.title}
+              style={styles.productCard}
+              className="productCard"
+            >
+              <div style={styles.productImageContainer} className="productImageContainer">
+                <img src={product.image} alt={product.title} style={styles.productImage} />
               </div>
 
               <h3 style={styles.productTitle}>{product.title}</h3>
               <p style={styles.productDesc}>{product.desc}</p>
-              <span style={{ ...styles.productLink, color: product.color }}>
-                Learn More →
-              </span>
+              <span style={{ ...styles.productLink, color: product.color }}>Learn More →</span>
             </Link>
           ))}
         </div>
@@ -125,7 +128,9 @@ const HomePage = () => {
       {/* Applications Section */}
       <section className="applications" style={styles.applicationsSection}>
         <div style={styles.sectionHeader}>
-          <h2 className="sectionTitle" style={styles.sectionTitle}>Applications</h2>
+          <h2 className="sectionTitle" style={styles.sectionTitle}>
+            Applications
+          </h2>
           <p style={styles.sectionSubtitle}>
             Trusted across industries for critical sensing applications
           </p>
@@ -151,11 +156,12 @@ const HomePage = () => {
       <section className="section" style={styles.section}>
         <div className="servicesContainer" style={styles.servicesContainer}>
           <div style={styles.servicesContent}>
-            <h2 className="sectionTitle" style={styles.sectionTitle}>Expert Services</h2>
+            <h2 className="sectionTitle" style={styles.sectionTitle}>
+              Expert Services
+            </h2>
             <p style={styles.servicesDesc}>
-              From initial consultation to full system installation and ongoing support,
-              our team of fiber optic specialists ensures your sensing solution delivers
-              optimal performance.
+              From initial consultation to full system installation and ongoing support, our team of
+              fiber optic specialists ensures your sensing solution delivers optimal performance.
             </p>
 
             <div style={styles.servicesList}>
@@ -192,9 +198,33 @@ const HomePage = () => {
           <div style={styles.servicesImage}>
             <div style={styles.servicesImagePlaceholder}>
               <svg width="200" height="200" viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="80" stroke="#00ff88" strokeWidth="2" fill="none" opacity="0.3" />
-                <circle cx="100" cy="100" r="60" stroke="#00ccff" strokeWidth="2" fill="none" opacity="0.5" />
-                <circle cx="100" cy="100" r="40" stroke="#ff6600" strokeWidth="2" fill="none" opacity="0.7" />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  stroke="#00ff88"
+                  strokeWidth="2"
+                  fill="none"
+                  opacity="0.3"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="60"
+                  stroke="#00ccff"
+                  strokeWidth="2"
+                  fill="none"
+                  opacity="0.5"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="40"
+                  stroke="#ff6600"
+                  strokeWidth="2"
+                  fill="none"
+                  opacity="0.7"
+                />
                 <circle cx="100" cy="100" r="20" fill="#ff3300" opacity="0.8" />
               </svg>
             </div>
@@ -204,14 +234,18 @@ const HomePage = () => {
 
       {/* CTA Section */}
       <section className="cta" style={styles.ctaSection}>
-        <h2 className="ctaTitle" style={styles.ctaTitle}>Ready to Get Started?</h2>
-        <p style={styles.ctaDesc}>
-          Contact our team to discuss your fiber optic sensing requirements
-        </p>
+        <h2 className="ctaTitle" style={styles.ctaTitle}>
+          Ready to Get Started?
+        </h2>
+        <p style={styles.ctaDesc}>Contact our team to discuss your fiber optic sensing requirements</p>
 
         <div className="ctaButtons" style={styles.ctaButtons}>
-          <Link to="/contact" style={styles.ctaPrimaryBtn}>Contact Us</Link>
-          <Link to="/products" style={styles.ctaSecondaryBtn}>Browse Products</Link>
+          <Link to="/contact" style={styles.ctaPrimaryBtn}>
+            Contact Us
+          </Link>
+          <Link to="/products" style={styles.ctaSecondaryBtn}>
+            Browse Products
+          </Link>
         </div>
       </section>
 
@@ -221,52 +255,34 @@ const HomePage = () => {
           50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
           100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); }
         }
+
         @keyframes fiberPulse {
           0% { transform: translateX(-100%); opacity: 0; }
           50% { opacity: 1; }
           100% { transform: translateX(200%); opacity: 0; }
         }
 
-        /* =========================
-           RESPONSIVE FIXES
-           ========================= */
-
-        .heroTitle { font-size: clamp(28px, 6vw, 56px); }
-        .heroSubtitle { font-size: clamp(14px, 2.2vw, 20px); }
-
-        .productsGrid {
-          display: grid;
-          gap: 30px;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        /* Center video properly */
+        .showcaseWrap{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          width:100%;
+        }
+        .showcaseVideo{
+          display:block;
+          margin:0 auto;
         }
 
-        .productImageContainer {
-          width: 100%;
-          max-width: 320px;
-          height: 160px;
-          margin: 0 auto 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .productImage { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        .applicationsGrid { -webkit-overflow-scrolling: touch; }
-        .appImage {
-          width: 100%;
-          max-width: 320px;
-          height: 180px;
-          object-fit: contain;
+        /* Desktop/tablet products = grid */
+        .productsTrack{
+          display:grid;
+          gap:30px;
+          grid-template-columns: repeat(3, 1fr);
         }
 
-        .servicesContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-
-        /* Mobile */
-        @media (max-width: 900px) {
-          .servicesContainer { grid-template-columns: 1fr; gap: 40px; }
-        }
-
-        @media (max-width: 768px) {
+        /* Mobile products = horizontal slider */
+        @media (max-width: 768px){
           .hero { padding: 80px 16px !important; min-height: auto !important; }
           .showcase { padding: 60px 16px !important; }
           .section { padding: 60px 16px !important; }
@@ -274,13 +290,37 @@ const HomePage = () => {
           .cta { padding: 70px 16px !important; }
 
           .heroCta { flex-direction: column; align-items: center; }
-          .heroCta a { width: 100%; max-width: 320px; text-align: center; }
+          .heroCta a { width: 100%; max-width: 340px; text-align: center; }
 
           .ctaButtons { flex-direction: column; align-items: center; }
-          .ctaButtons a { width: 100%; max-width: 320px; text-align: center; }
+          .ctaButtons a { width: 100%; max-width: 340px; text-align: center; }
+
+          .productsTrack{
+            display:flex;
+            gap:16px;
+            overflow-x:auto;
+            padding: 6px 4px 12px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .productsTrack::-webkit-scrollbar{
+            height: 6px;
+          }
+
+          .productCard{
+            flex: 0 0 85%;
+            scroll-snap-align: start;
+          }
+
+          .productImageContainer{
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 140px !important;
+            margin: 0 0 10px 0 !important;
+          }
 
           .showcaseVideo { width: 100% !important; border-radius: 16px !important; }
-          .sectionTitle { font-size: 28px !important; }
         }
       `}</style>
     </div>
@@ -333,9 +373,8 @@ const styles = {
     fontSize: '20px',
     color: 'rgba(255,255,255,0.7)',
     lineHeight: 1.7,
-    marginBottom: '40px',
-    maxWidth: '700px',
     margin: '0 auto 40px',
+    maxWidth: '700px',
   },
   heroCta: {
     display: 'flex',
@@ -382,6 +421,7 @@ const styles = {
     background: 'linear-gradient(90deg, transparent, #00ff88, #00ccff, transparent)',
     animation: 'fiberPulse 4s ease-in-out infinite',
   },
+
   showcaseSection: {
     padding: '100px 40px',
     textAlign: 'center',
@@ -398,6 +438,7 @@ const styles = {
     fontSize: '18px',
     color: 'rgba(255,255,255,0.7)',
   },
+
   section: {
     padding: '100px 40px',
     maxWidth: '1400px',
@@ -419,7 +460,6 @@ const styles = {
     color: 'rgba(255,255,255,0.6)',
   },
 
-  // Keep these; actual responsive behavior is handled by the CSS block above
   productsGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -478,6 +518,7 @@ const styles = {
     padding: '10px 0',
     scrollbarWidth: 'thin',
     scrollbarColor: '#00ccff transparent',
+    WebkitOverflowScrolling: 'touch',
   },
   appCard: {
     minWidth: '200px',
@@ -493,8 +534,9 @@ const styles = {
     flexShrink: 0,
   },
   appImage: {
-    width: '380px',
-    height: '260px',
+    width: '100%',
+    maxWidth: '320px',
+    height: '180px',
     objectFit: 'contain',
   },
   appName: {
@@ -502,6 +544,7 @@ const styles = {
     color: 'rgba(255,255,255,0.8)',
     fontWeight: 500,
   },
+
   centerCta: {
     textAlign: 'center',
   },
